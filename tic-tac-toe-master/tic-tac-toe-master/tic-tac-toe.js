@@ -34,16 +34,18 @@ document.addEventListener('DOMContentLoaded', function() {
         square.addEventListener('click', function() {
             if (gameOver || gameState[index]) return;
 
-            square.textContent = currentPlayer;
-            square.classList.add(currentPlayer);
-            gameState[index] = currentPlayer;
+            if (!square.textContent) { 
+                square.textContent = currentPlayer;
+                square.classList.add(currentPlayer);
+                gameState[index] = currentPlayer;
 
-            const winner = checkForWinner();
-            if (winner) {
-                gameOver = true;
-                displayWinner(winner);
-            } else {
-                currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';
+                const winner = checkForWinner();
+                if (winner) {
+                    gameOver = true;
+                    displayWinner(winner);
+                } else {
+                    currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';
+                }
             }
         });
 
