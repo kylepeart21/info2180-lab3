@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const squares = document.querySelectorAll('#game-board div');
+    const squares = document.querySelectorAll('#board div');
     const statusDiv = document.getElementById('status');
-    const newGameButton = document.getElementById('new-game');
+    const newGameButton = document.querySelector('.btn');
 
     let currentPlayer = 'X';
     let gameState = Array(squares.length).fill(null);
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         square.addEventListener('click', function() {
             if (gameOver || gameState[index]) return;
 
-            if (!square.textContent) { 
+            if (!square.textContent) {
                 square.textContent = currentPlayer;
                 square.classList.add(currentPlayer);
                 gameState[index] = currentPlayer;
